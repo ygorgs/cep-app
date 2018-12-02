@@ -1,0 +1,15 @@
+.container {
+    margin: auto;
+    width: 85%;
+    margin-top: 30px;
+}
+
+.cep-search-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .cep-search-full-width {
+    width: 50%;
+  }
