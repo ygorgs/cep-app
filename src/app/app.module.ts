@@ -10,12 +10,14 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { AddressSearchComponent } from './address-search/address-search.component';
 import { environment } from 'src/environments/environment';
+import { CepPipe } from './pipes/cep.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     AddressSearchComponent,
+    CepPipe,
   ],
   imports: [
     BrowserModule,

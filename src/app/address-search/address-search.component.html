@@ -48,12 +48,12 @@
             <p [innerHTML]="data.estado"></p>
           </div>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="getRegionBackground()">
           <div class="text-grid">
             <label>
               <b>CEP</b>
             </label>
-            <p [innerHTML]="data.cep"></p>
+            <p [innerHTML]="data.cep | cep"></p>
           </div>
         </mat-grid-tile>
       </mat-grid-list>

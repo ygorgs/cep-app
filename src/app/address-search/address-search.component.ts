@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TextMaskModule } from 'angular2-text-mask';
 
 import { AddressService } from '../services/address.service';
+import { RegionService } from 'src/app/services/region.service';
 
 @Component({
   selector: 'app-address-search',
@@ -16,7 +17,8 @@ export class AddressSearchComponent implements OnInit {
   cep: string;
   data: object;
 
-  constructor(private addressService: AddressService) { }
+  constructor(private addressService: AddressService,
+              private regionService: RegionService) { }
 
   ngOnInit() { }
 
@@ -24,6 +26,12 @@ export class AddressSearchComponent implements OnInit {
     this.addressService.getAddress(this.cep).subscribe(result => {
       this.data = result;
     });
+  }
+
+  getRegionBackground() {
+    if (this.data) {
+      return this.regionService.getRegionColor(this.data['estado']);
+    }
   }
 
 }
