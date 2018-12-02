@@ -1,0 +1,12 @@
+<div>
+  <form class="cep-search-form">
+    <mat-form-field class="cep-search-full-width">
+      <input matInput name="search-field" type="text" placeholder="Digite o CEP" [(ngModel)]="cep"
+            [textMask]="{mask: cepMask}">
+    </mat-form-field>
+    <button mat-button>
+      <mat-icon (click)="searchCEP()">search</mat-icon>
+    </button>
+  </form>
+
+</div>
