@@ -1,12 +1,62 @@
-<div>
+<div class="row">
   <form class="cep-search-form">
     <mat-form-field class="cep-search-full-width">
-      <input matInput name="search-field" type="text" placeholder="Digite o CEP" [(ngModel)]="cep"
-            [textMask]="{mask: cepMask}">
+      <input matInput name="search-field" type="text" placeholder="Digite o CEP" [(ngModel)]="cep" [textMask]="{mask: cepMask}">
     </mat-form-field>
     <button mat-button>
       <mat-icon (click)="searchCEP()">search</mat-icon>
     </button>
   </form>
+</div>
 
+<div class="row">
+  <mat-card *ngIf="data">
+    <mat-card-title>
+      <h3>Endereço</h3>
+    </mat-card-title>
+    <mat-card-content>
+      <mat-grid-list cols="3" rowHeight="80px">
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <div class="text-grid">
+            <label>
+              <b>Logradouro</b>
+            </label>
+            <p [innerHTML]="data.logradouro"></p>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <div class="text-grid">
+            <label>
+              <b>Bairro</b>
+            </label>
+            <p [innerHTML]="data.bairro"></p>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <div class="text-grid">
+            <label>
+              <b>Cidade</b>
+            </label>
+            <p [innerHTML]="data.cidade"></p>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <div class="text-grid">
+            <label>
+              <b>Estado</b>
+            </label>
+            <p [innerHTML]="data.estado"></p>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <div class="text-grid">
+            <label>
+              <b>CEP</b>
+            </label>
+            <p [innerHTML]="data.cep"></p>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
 </div>

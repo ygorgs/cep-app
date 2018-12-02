@@ -13,3 +13,8 @@
   .cep-search-full-width {
     width: 50%;
   }
+
+  .text-grid {
+    position: absolute;
+    left: 5px;
+  }
