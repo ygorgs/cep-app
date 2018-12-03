@@ -2,7 +2,8 @@
   <!-- Campo de Busca -->
   <form class="cep-search-form">
     <mat-form-field class="cep-search-full-width">
-      <input matInput name="search-field" type="text" placeholder="Digite o CEP" [(ngModel)]="cep" [textMask]="{mask: cepMask}">
+      <input matInput name="search-field" type="text" placeholder="Digite o CEP"
+        [(ngModel)]="cep" [textMask]="{mask: cepMask}" minlenght="8" required>
     </mat-form-field>
     <button mat-button>
       <mat-icon (click)="searchCEP()">search</mat-icon>
@@ -12,7 +13,7 @@
 
 <div class="row">
   <!-- Card de exibição do endereço -->
-  <mat-card *ngIf="data">
+  <mat-card *ngIf="data" [style.background]="getRegionBackground()">
     <mat-card-title>
       <h3>Endereço</h3>
     </mat-card-title>
@@ -50,7 +51,7 @@
             <p [innerHTML]="data.estado"></p>
           </div>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="getRegionBackground()">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
           <div class="text-grid">
             <label>
               <b>CEP</b>
