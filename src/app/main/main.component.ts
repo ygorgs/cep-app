@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatInput, MatFormField } from '@angular/material';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-main',
@@ -9,13 +8,14 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class MainComponent implements OnInit {
 
-  cep: string;
+  @Output() currentAddress = new EventEmitter();
 
-  constructor() {
-    this.cep = '';
-  }
+  constructor() { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  addNewAddress(address: any): void {
+    this.currentAddress.emit(address);
   }
 
 }

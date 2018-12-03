@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule, MatInputModule, MatFormFieldModule, MatIconModule, MatCardModule, MatGridListModule } from '@angular/material';
+import { MatButtonModule, MatInputModule,
+         MatFormFieldModule, MatIconModule,
+         MatCardModule, MatGridListModule,
+         MatTableModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TextMaskModule } from 'angular2-text-mask';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,6 +14,7 @@ import { MainComponent } from './main/main.component';
 import { AddressSearchComponent } from './address-search/address-search.component';
 import { environment } from 'src/environments/environment';
 import { CepPipe } from './pipes/cep.pipe';
+import { AddressHistoryComponent } from './address-history/address-history.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +22,7 @@ import { CepPipe } from './pipes/cep.pipe';
     MainComponent,
     AddressSearchComponent,
     CepPipe,
+    AddressHistoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,8 @@ import { CepPipe } from './pipes/cep.pipe';
     MatFormFieldModule,
     MatIconModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTableModule
   ],
   providers: [
     { provide: 'API', useValue: environment.BASE_URL }

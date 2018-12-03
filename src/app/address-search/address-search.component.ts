@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { TextMaskModule } from 'angular2-text-mask';
+import { Component, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 import { AddressService } from '../services/address.service';
 import { RegionService } from 'src/app/services/region.service';
+import { Address } from '../entities/address';
 
 @Component({
   selector: 'app-address-search',
@@ -15,7 +16,9 @@ export class AddressSearchComponent implements OnInit {
   public cepMask = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
 
   cep: string;
-  data: object;
+  data: Address;
+
+  @Output() emitAddress = new EventEmitter<Address>();
 
   constructor(private addressService: AddressService,
               private regionService: RegionService) { }
@@ -24,8 +27,10 @@ export class AddressSearchComponent implements OnInit {
 
   searchCEP() {
     this.addressService.getAddress(this.cep).subscribe(result => {
-      this.data = result;
+      this.data = new Address(result);
+      this.emitAddress.emit(this.data);
     });
+
   }
 
   getRegionBackground() {

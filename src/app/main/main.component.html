@@ -2,6 +2,8 @@
 
   <h1> Consulta de CEP </h1>
 
-  <app-address-search></app-address-search>
+  <app-address-search (emitAddress)="addNewAddress($event)"></app-address-search>
+
+  <app-address-history [address]="currentAddress"></app-address-history>
 
 </div>
