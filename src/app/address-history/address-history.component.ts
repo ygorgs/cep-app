@@ -11,13 +11,17 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class AddressHistoryComponent implements OnInit, OnDestroy {
 
+  /* Endereço a ser adicionado no histórico */
   @Input() address: EventEmitter<Address>;
 
   addressList: Address[];
   showHistory: boolean;
 
+  /* Limite de endereços a serem exibidos no histórico */
   private LIMIT = 10;
+  /* Nome das colunas da tabela de histórico */
   private displayedColumns = ['cep', 'logradouro', 'bairro', 'cidade', 'estado'];
+  /* Lista de endereços exibidos na tabela */
   private dataSource = new MatTableDataSource<Address>();
 
   constructor() { }
@@ -36,6 +40,11 @@ export class AddressHistoryComponent implements OnInit, OnDestroy {
     this.address.unsubscribe();
   }
 
+  /**
+   * Adiciona um novo endereço a lista de histórico
+   *
+   * @param address endereço a ser adicionado
+   */
   addNewAddress(address: Address): void {
     if (this.addressList.length === this.LIMIT) {
       this.addressList.shift();

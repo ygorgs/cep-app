@@ -11,8 +11,9 @@ import { Address } from '../entities/address';
   styleUrls: ['./address-search.component.css'],
   providers: [AddressService]
 })
-export class AddressSearchComponent implements OnInit {
+export class AddressSearchComponent {
 
+  /* mascara usada no campo de busca de CEP */
   public cepMask = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
 
   cep: string;
@@ -23,8 +24,9 @@ export class AddressSearchComponent implements OnInit {
   constructor(private addressService: AddressService,
               private regionService: RegionService) { }
 
-  ngOnInit() { }
-
+  /**
+   * Realiza a busca por um determinado endereço através do CEP.
+   */
   searchCEP() {
     this.addressService.getAddress(this.cep).subscribe(result => {
       this.data = new Address(result);
@@ -33,6 +35,9 @@ export class AddressSearchComponent implements OnInit {
 
   }
 
+  /**
+   * Retorna a cor a ser usada no background de acordo com a região.
+   */
   getRegionBackground() {
     if (this.data) {
       return this.regionService.getRegionColor(this.data['estado']);

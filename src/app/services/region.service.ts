@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+/** Enum relacionando o estádo com sua respectiva região. */
 enum States {
   AC = 'norte',
   AL = 'nordeste',
@@ -37,6 +38,11 @@ export class RegionService {
 
   constructor() { }
 
+  /**
+   * Retorna a corde referente a região do estada passado como parâmetro.
+   *
+   * @param state estado.
+   */
   getRegionColor(state: string): string {
     switch (this.identifyRegion(state)) {
       case 'norte':
@@ -52,6 +58,11 @@ export class RegionService {
     }
   }
 
+  /**
+   * Identifica a região do estado passado como parâmetro.
+   *
+   * @param state Estado.
+   */
   identifyRegion(state: string): string {
     return States[state];
   }
